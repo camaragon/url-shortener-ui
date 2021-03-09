@@ -14,6 +14,7 @@ export class App extends Component {
 
   componentDidMount() {
     getUrls()
+    .then(response => this.setState({urls: response}))
   }
 
   render() {
