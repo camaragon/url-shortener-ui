@@ -19,6 +19,8 @@ export class App extends Component {
 
   addUrl = (newUrl) => {
     postUrl(newUrl)
+    .then(response => response.json())
+    .then((data) => this.setState({ urls: [...this.state.urls, data]}))
   }
 
   render() {
