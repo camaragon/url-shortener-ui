@@ -28,12 +28,27 @@ describe('URL Shortener', () => {
     it('Should be able to fill out form and add a new shortened URL', () => {
         cy
         .get('input[name=title]').type('This POST intercept worked')
-        .get('input[name=long_url]').type('https://images.unsplash.com/photo-1531898418865-480b7090470f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')
+        .get('input[name=long_url]').type('https://calendar.google.com/calendar/u/0/r/week/2021/2/9?pli=1')
         .get('button').click()
         .wait(500)
         .get('section').children().its('length').should('eq', 3);
     })
 
-    it('Should contain the entered input info in the ')
+    it('Should contain the entered input info in the newly added shortened URL', () => {
+        cy
+        .get('input[name=title]').type('This POST intercept worked')
+        .get('input[name=long_url]').type('https://calendar.google.com/calendar/u/0/r/week/2021/2/9?pli=1')
+        .get('button').click()
+        .wait(500)
+        .get('section').within(() => {
+            cy
+            .get('.url:last').within(() => {
+                cy
+                .get('h3').contains('This POST intercept worked')
+                .get('a').contains('https://calendar.google.com/calendar/3')
+                .get('p').contains('https://calendar.google.com/calendar/u/0/r/week/2021/2/9?pli=1')
+            })
+        })
+    })
 
 })
