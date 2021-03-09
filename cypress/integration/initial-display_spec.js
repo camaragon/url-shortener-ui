@@ -3,13 +3,14 @@ describe('URL Shortener', () => {
 
     beforeEach(() => {
         cy
-        .fixture('urlData.json')
-      .then(urls => {
-        cy
-        .intercept('GET', 'http://localhost:3001/api/v1/urls', {
-          body: urls
-        })
-      });
+        .fixture('urlGetData.json')
+        .then(urls => {
+            cy
+            .intercept('GET', 'http://localhost:3001/api/v1/urls', {
+                statusCode: 200,
+                body: urls
+            })
+        });
 
       cy
       .visit(baseUrl);

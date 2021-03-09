@@ -11,13 +11,14 @@ describe('URL Shortener', () => {
                 body: urls
             })
          }); 
+
         cy
         .fixture('urlPostData.json')
-        .then(urls => {
+        .then(url => {
             cy
             .intercept('POST', 'http://localhost:3001/api/v1/urls', {
                 statusCode: 200,
-                body: urls
+                body: url
             })
         });
 
