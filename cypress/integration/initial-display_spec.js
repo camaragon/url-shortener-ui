@@ -45,4 +45,30 @@ describe('URL Shortener', () => {
             })
         })
     });
+
+    it('Should display a form with 2 input fields', () => {
+        cy
+        .get('form').within(() => {
+            cy
+            .get('input').its('length').should('eq',  2)
+        })
+    })
+
+    it('Should have an input for title', () => {
+        cy
+        .get('form input[name=title]')
+    });
+
+    it('Should have an input for long_url', () => {
+        cy
+        .get('form input[name=long_url]')
+    });
+
+    it('Should display a button to submit the form', () => {
+        cy
+        .get('form').within(() => {
+            cy
+            .get('button').should('be.visible').contains('Shorten Please!')
+        })
+    })
 })
