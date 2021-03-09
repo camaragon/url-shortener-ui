@@ -54,14 +54,20 @@ describe('URL Shortener', () => {
         })
     })
 
-    it('Should have an input for title', () => {
+    it('Should have an input for Title', () => {
         cy
-        .get('form input[name=title]')
+        .get('form').within(() => {
+            cy
+            .get('input[name=title]')
+        })
     });
 
-    it('Should have an input for long_url', () => {
+    it('Should have an input for URL to Shorten', () => {
         cy
-        .get('form input[name=long_url]')
+        .get('form').within(() => {
+            cy
+            .get('input[name=long_url]')
+        })
     });
 
     it('Should display a button to submit the form', () => {
@@ -69,6 +75,26 @@ describe('URL Shortener', () => {
         .get('form').within(() => {
             cy
             .get('button').should('be.visible').contains('Shorten Please!')
+        })
+    })
+
+    it('Should be able to type into the title field', () => {
+        cy
+        .get('form').within(() => {
+            cy
+            .get('input[name=title]')
+            .type('My Favorite URL Ever!')
+            .should('have.value', 'My Favorite URL Ever!')
+        })
+    })
+
+    it('Should be able to type into the URL to Shorten field', () => {
+        cy
+        .get('form').within(() => {
+            cy
+            .get('input[name=long_url]')
+            .type('https://github.com/camaragon/url-shortener-ui')
+            .should('have.value', 'https://github.com/camaragon/url-shortener-ui')
         })
     })
 })
