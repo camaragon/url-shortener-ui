@@ -16,6 +16,11 @@ class UrlForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
+    const newUrl = {...this.state, id: Date.now()};
+
+    this.props.addUrl(newUrl)
+
     this.clearInputs();
   }
 

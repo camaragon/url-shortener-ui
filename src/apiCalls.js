@@ -4,7 +4,7 @@ const getUrls = () => {
       .then(data => data.urls)
 }
 
-const addUrl = (newUrl) => {
+const postUrl = (newUrl) => {
   return fetch('http://localhost:3001/api/v1/urls', {
       method: 'POST',
       headers: {
@@ -13,4 +13,4 @@ const addUrl = (newUrl) => {
       body: JSON.stringify(newUrl)
     })
 }
-export {getUrls};
+export {getUrls, postUrl};
