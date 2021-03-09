@@ -14,13 +14,21 @@ export class App extends Component {
 
   componentDidMount() {
     getUrls()
-    .then(response => this.setState({urls: response}))
+    .then(response => {
+      this.setState({
+        urls: response
+      })
+    })
   }
 
   addUrl = (newUrl) => {
     postUrl(newUrl)
     .then(response => response.json())
-    .then((data) => this.setState({ urls: [...this.state.urls, data]}))
+    .then((data) => {
+      this.setState({
+        urls: [...this.state.urls, data]
+      })
+    })
   }
 
   render() {

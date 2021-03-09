@@ -13,4 +13,5 @@ const postUrl = (newUrl) => {
       body: JSON.stringify(newUrl)
     })
 }
+
 export {getUrls, postUrl};
